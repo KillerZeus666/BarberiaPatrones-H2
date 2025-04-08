@@ -1,11 +1,15 @@
 package com.barberia.demo.controller;
 
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
 import com.barberia.demo.model.Cita;
 import com.barberia.demo.servicio.CitaService;
 import com.barberia.demo.servicio.ClienteService;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/citas")
@@ -19,6 +23,13 @@ public class CitaController {
         this.clienteService = clienteService;
     }
 
+    @GetMapping
+    public String listar(Model model) {
+        model.addAttribute("citas", citaService.listar()); // ✅ Usar la instancia correcta
+        return "citas";
+    }
+    
+
     @GetMapping("/nueva")
     public String nueva(Model model) {
         model.addAttribute("cita", new Cita());
@@ -28,7 +39,11 @@ public class CitaController {
 
     @PostMapping
     public String guardar(@ModelAttribute Cita cita) {
+        Long clienteId = cita.getCliente().getId();
+        cita.setCliente(clienteService.buscarPorId(clienteId));
         citaService.guardar(cita);
-        return "redirect:/clientes";
+        return "redirect:/citas";
     }
+    
+
 }
