@@ -2,11 +2,64 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Lista de Citas</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f3ecf9;
+            padding: 40px;
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            color: #6a1b9a;
+            margin-bottom: 30px;
+        }
+
+        a {
+            display: inline-block;
+            margin-bottom: 20px;
+            background-color: #8e24aa;
+            color: white;
+            padding: 10px 15px;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: background-color 0.3s;
+        }
+
+        a:hover {
+            background-color: #6a1b9a;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 14px;
+            text-align: left;
+            border-bottom: 1px solid #e0d5eb;
+        }
+
+        th {
+            background-color: #6a1b9a;
+            color: white;
+        }
+
+        tr:hover {
+            background-color: #f1e6fa;
+        }
+    </style>
 </head>
 <body>
     <h1>Lista de Citas</h1>
     <a th:href="@{/citas/nueva}">Nueva Cita</a>
-    <table border="1">
+    <table>
         <thead>
             <tr>
                 <th>ID</th>

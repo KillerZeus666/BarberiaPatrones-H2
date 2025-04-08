@@ -2,17 +2,73 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Nuevo Cliente</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f9f7fc;
+            padding: 40px;
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            color: #6a1b9a;
+            margin-bottom: 30px;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 25px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #6a1b9a;
+        }
+
+        input[type="text"],
+        input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #8e24aa;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #6a1b9a;
+        }
+    </style>
 </head>
 <body>
-<h1>Agregar Cliente</h1>
-<form th:action="@{/clientes}" th:object="${cliente}" method="post">
-    <label>Nombre:</label>
-    <input type="text" th:field="*{nombre}" />
-    <br/>
-    <label>Correo:</label>
-    <input type="email" th:field="*{correo}" />
-    <br/>
-    <button type="submit">Guardar</button>
-</form>
+    <h1>Agregar Cliente</h1>
+    <form th:action="@{/clientes}" th:object="${cliente}" method="post">
+        <label>Nombre:</label>
+        <input type="text" th:field="*{nombre}" />
+
+        <label>Correo:</label>
+        <input type="email" th:field="*{correo}" />
+
+        <button type="submit">Guardar</button>
+    </form>
 </body>
 </html>

@@ -2,26 +2,80 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Agendar Cita</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f9f7fc;
+            padding: 40px;
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            color: #6a1b9a;
+            margin-bottom: 30px;
+        }
+
+        form {
+            max-width: 450px;
+            margin: 0 auto;
+            padding: 25px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #6a1b9a;
+        }
+
+        input[type="datetime-local"],
+        input[type="text"],
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #8e24aa;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #6a1b9a;
+        }
+    </style>
 </head>
 <body>
+
 <h1>Agendar Cita</h1>
 
 <form th:action="@{/citas}" th:object="${cita}" method="post">
     <label>Fecha y Hora:</label>
     <input type="datetime-local" th:field="*{fechaHora}" required />
-    <br/>
 
     <label>Servicio:</label>
     <input type="text" th:field="*{servicio}" required />
-    <br/>
 
     <label>Cliente:</label>
     <select th:field="*{cliente.id}">
         <option value="" disabled selected>Seleccione un cliente</option>
         <option th:each="c : ${clientes}" th:value="${c.id}" th:text="${c.nombre}"></option>
     </select>
-    
-    <br/>
 
     <button type="submit">Agendar</button>
 </form>
