@@ -22,6 +22,13 @@ public class Cliente {
     @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Cita> citas;
 
+    public Cliente(String string, String string2) {
+        this.nombre = string;
+        this.correo = string2;
+    }
+
+    public Cliente() {
+    }
     // Getters y Setters
     public Long getId() {
         return id;
