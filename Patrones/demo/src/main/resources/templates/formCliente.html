@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Nuevo Cliente</title>
+</head>
+<body>
+<h1>Agregar Cliente</h1>
+<form th:action="@{/clientes}" th:object="${cliente}" method="post">
+    <label>Nombre:</label>
+    <input type="text" th:field="*{nombre}" />
+    <br/>
+    <label>Correo:</label>
+    <input type="email" th:field="*{correo}" />
+    <br/>
+    <button type="submit">Guardar</button>
+</form>
+</body>
+</html>

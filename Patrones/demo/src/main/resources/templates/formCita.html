@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Nueva Cita</title>
+</head>
+<body>
+<h1>Agendar Cita</h1>
+<form th:action="@{/citas}" th:object="${cita}" method="post">
+    <label>Fecha y Hora:</label>
+    <input type="datetime-local" th:field="*{fechaHora}" />
+    <br/>
+    <label>Servicio:</label>
+    <input type="text" th:field="*{servicio}" />
+    <br/>
+    <label>Cliente:</label>
+    <select th:field="*{cliente}">
+        <option th:each="c : ${clientes}" th:value="${c}" th:text="${c.nombre}">Cliente</option>
+    </select>
+    <br/>
+    <button type="submit">Agendar</button>
+</form>
+</body>
+</html>
